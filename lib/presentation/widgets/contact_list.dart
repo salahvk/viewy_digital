@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:viewy_digital/data/model/Chat_message_model.dart';
+import 'package:viewy_digital/presentation/widgets/animation_widget.dart';
 
 class ContactList extends StatelessWidget {
   final List<Chat> contacts;
@@ -12,14 +13,14 @@ class ContactList extends StatelessWidget {
       itemCount: contacts.length,
       itemBuilder: (context, index) {
         final contact = contacts[index];
-        // Create contact list item widgets
-        // Similar to the chat list, add necessary animations
-        return ListTile(
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(contact.profileImage),
+        return TranslateUpAnimation(
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundImage: NetworkImage(contact.profileImage),
+            ),
+            title: Text(contact.name),
+            subtitle: Text(contact.subtitle),
           ),
-          title: Text(contact.name),
-          subtitle: Text(contact.subtitle),
         );
       },
     );
